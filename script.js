@@ -1,11 +1,17 @@
 (()=>{
-  const exactLogoStyle=document.createElement('link');
-  exactLogoStyle.rel='stylesheet';
-  exactLogoStyle.href='assets/sv-logo-exact.css?v=1';
-  document.head.appendChild(exactLogoStyle);
+  const loadExactLogo=version=>{
+    const previous=document.querySelector('link[data-exact-sv-logo]');
+    if(previous)previous.remove();
+    const style=document.createElement('link');
+    style.rel='stylesheet';
+    style.href=`assets/sv-logo-exact.css?v=${version}`;
+    style.dataset.exactSvLogo='true';
+    document.head.appendChild(style);
+  };
+
+  loadExactLogo('3');
 
   const portraits=[...document.querySelectorAll('[data-pro-portrait]')];
-
   portraits.forEach(image=>{
     image.style.opacity='0';
     image.style.visibility='hidden';
@@ -25,5 +31,8 @@
   const app=document.createElement('script');
   app.src='script-main.js?v=1';
   app.defer=true;
+  app.onload=()=>loadExactLogo('4');
   document.head.appendChild(app);
+
+  window.addEventListener('load',()=>loadExactLogo('5'),{once:true});
 })();
