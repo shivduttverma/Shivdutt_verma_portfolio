@@ -1,24 +1,88 @@
-const secureConfig=document.createElement('script');secureConfig.src='secure-config.js?v=1';secureConfig.onload=()=>{const secureModule=document.createElement('script');secureModule.src='secure-contact.js?v=2';secureModule.defer=true;document.head.appendChild(secureModule)};document.head.appendChild(secureConfig);
+const deepStyle=document.createElement('link');deepStyle.rel='stylesheet';deepStyle.href='services-deep.css?v=4';document.head.appendChild(deepStyle);
 
-const deepStyle=document.createElement('link');deepStyle.rel='stylesheet';deepStyle.href='services-deep.css?v=3';document.head.appendChild(deepStyle);
-
-const portraitChunks=['assets/portrait/p1.txt','assets/portrait/p2.txt','assets/portrait/p3.txt','assets/portrait/p4.txt','assets/portrait/p5.txt','assets/portrait/p6.txt'];Promise.all(portraitChunks.map(p=>fetch(p).then(r=>{if(!r.ok)throw new Error('portrait');return r.text()}))).then(parts=>{const src='data:image/webp;base64,'+parts.join('');document.querySelectorAll('[data-pro-portrait]').forEach(img=>img.src=src)}).catch(()=>{});
+const portraitChunks=['assets/portrait/p1.txt','assets/portrait/p2.txt','assets/portrait/p3.txt','assets/portrait/p4.txt','assets/portrait/p5.txt','assets/portrait/p6.txt'];
+Promise.all(portraitChunks.map(path=>fetch(path).then(response=>{if(!response.ok)throw new Error('portrait');return response.text()})))
+  .then(parts=>{const src='data:image/webp;base64,'+parts.join('');document.querySelectorAll('[data-pro-portrait]').forEach(image=>image.src=src)})
+  .catch(()=>{});
 
 const serviceDetails=[
-{select:'Business Website',project:'projects/business/index.html',items:['Responsive home, about, services and contact sections','WhatsApp, call and enquiry conversion buttons','Business information, service areas and trust sections','Mobile, tablet and desktop layout optimization','Basic on-page SEO structure and professional page hierarchy'],fit:'Local businesses, service providers, consultants, shops and professionals.'},
-{select:'E-commerce / Shopify Store',project:'projects/ecommerce/index.html',items:['Store structure, navigation, collections and category organization','Product page layout with price, variants, offers and product details','Cart experience, trust blocks, shipping and policy presentation','Shopify theme/store setup and storefront customization support','Mobile-first shopping flow designed for product discovery and conversion'],fit:'Fashion, electronics, beauty, home, accessories and other product-based sellers.'},
-{select:'Product Listing & Catalog',project:'projects/catalog/index.html',items:['Product titles, descriptions, images, categories and tags','SKU, pricing, compare-at price, inventory and stock status','Variants such as size, colour, pack or model options','Shopify-style product entry, cleanup and catalog organization','Spreadsheet-based bulk listing preparation and product data cleanup'],fit:'Stores with many products that need accurate, organized and consistent listings.'},
-{select:'Business / Management App',project:'projects/library/index.html',items:['Custom dashboard with useful business KPIs and status cards','Customer, member, order, payment or record-management workflows','Add, edit, search, filter and structured data-entry interfaces','Role-ready application structure with responsive desktop/mobile UI','Custom workflow planning based on the actual day-to-day business process'],fit:'Libraries, service businesses, offices and teams replacing manual registers or scattered records.'},
-{select:'Portfolio / Landing Page',project:'#work',items:['Professional profile, services, skills and project presentation','Strong hero section and clear lead/contact call-to-action','Responsive layout for mobile, tablet and desktop','Campaign, personal brand or service-specific landing page structure','SEO/meta-ready page structure and analytics-ready layout'],fit:'Freelancers, job seekers, creators, professionals and service businesses.'},
-{select:'Form / Data Collection',project:'projects/form/index.html',items:['Registration, enquiry, feedback and lead-capture forms','Multi-step forms with required-field validation','Structured fields, dropdowns, dates and conditional workflow planning','Submission summary, CSV-ready data structure and export-oriented setup','Google Sheets or other simple data-flow integration when required'],fit:'Admissions, leads, surveys, customer enquiries, bookings and internal data collection.'},
-{select:'Social Media / YouTube Design',project:'#contact',items:['YouTube thumbnails designed for clear mobile readability','Facebook, Instagram and WhatsApp promotional posts','Channel banners, cover graphics and campaign creatives','Offer posters, product promotions and ad-style graphics','Platform-specific resizing and consistent visual presentation'],fit:'Creators, local businesses, sellers and brands needing regular promotional graphics.'},
-{select:'PDF / Document Work',project:'#contact',items:['PDF editing, cleanup, page arrangement and formatting','PDF conversion and professional document preparation','Fillable form layout and structured information documents','Merge, split and organize document content when required','Clean business-ready layout for reports, forms and client documents'],fit:'Businesses and individuals who need documents cleaned, converted or professionally presented.'},
-{select:'Excel / Data Entry',project:'#contact',items:['Accurate data entry and structured spreadsheet preparation','Data cleanup, duplicate removal, sorting and standardization','Basic formulas, filters, tables and reporting layouts','Product/customer lists and organized business records','Simple summary dashboards and reusable sheet structures'],fit:'Businesses with raw, inconsistent or manually maintained spreadsheet data.'},
-{select:'Other Online Work',project:'#contact',items:['Website content upload and structured online data entry','Research, information collection and organized reporting','Repetitive digital/admin tasks with a clear process','Account, page or online business setup assistance where appropriate','Custom digital work evaluated first and scoped before starting'],fit:'One-off digital tasks that do not fit neatly into the categories above.'}
+  {select:'Business Website',project:'projects/business/index.html',items:['Responsive home, about, services and contact sections','Enquiry forms and clear call-to-action workflows','Business information, service areas and trust sections','Desktop, tablet and mobile layout optimization','Basic on-page SEO structure and page hierarchy'],fit:'Local businesses, service providers, consultants, shops and professionals.'},
+  {select:'E-commerce / Shopify Store',project:'projects/ecommerce/index.html',items:['Store navigation, collections and category organization','Product pages with price, variants, offers and details','Cart flow, shipping information and policy presentation','Shopify theme setup and storefront customization support','Mobile-first product discovery and purchase flow'],fit:'Fashion, electronics, beauty, home, accessories and other product-based sellers.'},
+  {select:'Product Listing & Catalog',project:'projects/catalog/index.html',items:['Product titles, descriptions, images, categories and tags','SKU, pricing, compare-at price, inventory and stock status','Variants such as size, colour, pack or model options','Product entry, cleanup and catalogue organization','Spreadsheet-based bulk listing preparation and data cleanup'],fit:'Stores that need accurate, organized and consistent product listings.'},
+  {select:'Business / Management App',project:'projects/library/index.html',items:['Custom dashboard with business KPIs and status cards','Customer, member, order, payment or record workflows','Add, edit, search, filter and structured data entry','Responsive application layouts for desktop and mobile','Workflow planning based on the day-to-day business process'],fit:'Libraries, service businesses, offices and teams replacing manual records.'},
+  {select:'Portfolio / Landing Page',project:'#work',items:['Professional profile, services, skills and project presentation','Clear hero section and lead-focused call to action','Responsive layout for desktop, tablet and mobile','Personal brand, campaign or service-specific page structure','SEO and analytics-ready page structure'],fit:'Freelancers, job seekers, creators, professionals and service businesses.'},
+  {select:'Form / Data Collection',project:'projects/form/index.html',items:['Registration, enquiry, feedback and lead-capture forms','Multi-step forms with required-field validation','Structured fields, dropdowns, dates and conditional flows','Submission summaries and export-oriented data structure','Spreadsheet or simple data-flow integration when required'],fit:'Admissions, surveys, bookings, customer enquiries and internal data collection.'},
+  {select:'Social Media / YouTube Design',project:'',items:['YouTube thumbnails designed for mobile readability','Facebook and Instagram promotional posts','Channel banners, covers and campaign graphics','Offer posters, product promotions and advertising creatives','Platform-specific resizing and consistent presentation'],fit:'Creators, businesses, sellers and brands requiring promotional graphics.'},
+  {select:'PDF / Document Work',project:'',items:['PDF editing, cleanup, page arrangement and formatting','PDF conversion and professional document preparation','Fillable forms and structured information documents','Merge, split and document organization','Business-ready reports, forms and client documents'],fit:'Businesses and individuals requiring clean, structured documents.'},
+  {select:'Excel / Data Entry',project:'',items:['Accurate data entry and structured spreadsheet preparation','Data cleanup, duplicate removal and standardization','Basic formulas, filters, tables and reporting layouts','Product, customer and business record organization','Simple summaries and reusable sheet structures'],fit:'Businesses with raw, inconsistent or manually maintained spreadsheet data.'},
+  {select:'Other Online Work',project:'',items:['Website content upload and structured online data entry','Research, information collection and organized reporting','Repetitive digital tasks with a defined process','Online business and page setup assistance','Custom digital work reviewed and scoped before starting'],fit:'Defined digital tasks that do not fit the categories above.'}
 ];
 
-const services=document.querySelector('#services');if(services){const head=services.querySelector('.services-head');if(head){const h2=head.querySelector('h2'),p=head.querySelector('p');if(h2)h2.textContent='Complete digital services — from setup to ready-to-use delivery';if(p)p.textContent='Not just a short service list. Below you can see what each service can include, the type of work I can handle, and which businesses or projects it is best suited for.';head.insertAdjacentHTML('afterend','<div class="service-value-strip reveal"><div class="service-value"><b>Requirement Planning</b><span>Work is structured around the actual goal before building starts.</span></div><div class="service-value"><b>Responsive Delivery</b><span>Web work is prepared for desktop, tablet and mobile use.</span></div><div class="service-value"><b>Practical Functionality</b><span>Forms, filters, cart, records and workflows are built where relevant.</span></div><div class="service-value"><b>Clear Final Handover</b><span>Scope, revisions and the final usable output stay clearly defined.</span></div></div>')};const cards=[...services.querySelectorAll('.service-pro')];cards.forEach((card,i)=>{const data=serviceDetails[i];if(!data)return;const content=card.querySelector('.service-content');if(!content)return;const list=data.items.map(x=>`<li>${x}</li>`).join('');const projectLink=data.project.startsWith('#')?`<a class="service-action" href="${data.project}">See relevant work</a>`:`<a class="service-action" href="${data.project}">View related project</a>`;content.insertAdjacentHTML('beforeend',`<div class="service-deep"><div class="service-deep-title">TYPICAL DELIVERABLES</div><ul class="service-list">${list}</ul><div class="service-fit"><b>Best for:</b> ${data.fit}</div><div class="service-actions"><a class="service-action primary request-service" href="#contact" data-service="${data.select}">Request this service</a>${projectLink}</div></div>`)});const grid=services.querySelector('.service-grid');if(grid)grid.insertAdjacentHTML('afterend','<div class="service-scope-note reveal"><div><h3>Need a combination of services?</h3><p>A project can combine website development, product listing, forms, design, data work or a management interface. The scope can be planned as one practical delivery instead of treating every small task separately.</p></div><a href="#contact">Discuss your requirement →</a></div>')}
+let serviceSectionRendered=false;
+function renderServices(contactEnabled){
+  if(serviceSectionRendered)return;
+  serviceSectionRendered=true;
+  const services=document.querySelector('#services');
+  if(!services)return;
 
-document.querySelectorAll('.request-service').forEach(a=>a.addEventListener('click',()=>{const select=document.getElementById('service');if(!select)return;const wanted=a.dataset.service;const option=[...select.options].find(o=>o.textContent.trim()===wanted);if(option)select.value=option.value}));
+  const head=services.querySelector('.services-head');
+  if(head){
+    const h2=head.querySelector('h2');
+    const p=head.querySelector('p');
+    if(h2)h2.textContent='Digital services for business and online work';
+    if(p)p.textContent='Each service is organized around a defined scope, practical deliverables and a usable final result.';
+    head.insertAdjacentHTML('afterend','<div class="service-value-strip reveal"><div class="service-value"><b>Requirement Planning</b><span>Scope and expected results are defined before development starts.</span></div><div class="service-value"><b>Responsive Delivery</b><span>Web work is prepared for desktop, tablet and mobile use.</span></div><div class="service-value"><b>Functional Workflows</b><span>Forms, filters, carts and management flows are included where required.</span></div><div class="service-value"><b>Defined Handover</b><span>Deliverables, revisions and final output remain clearly documented.</span></div></div>');
+  }
 
-const menuBtn=document.getElementById('menuBtn');const nav=document.getElementById('navMenu');menuBtn?.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open))});nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuBtn?.setAttribute('aria-expanded','false')}));document.getElementById('year').textContent=new Date().getFullYear();const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));document.getElementById('contactForm')?.addEventListener('submit',e=>{e.preventDefault();const name=encodeURIComponent(document.getElementById('name').value.trim());const service=encodeURIComponent(document.getElementById('service').value);const message=encodeURIComponent(document.getElementById('message').value.trim());window.open(`https://wa.me/917733085515?text=Hello%20Shivdutt%2C%20my%20name%20is%20${name}.%0AWork%20needed%3A%20${service}%0ARequirement%3A%20${message}`,'_blank','noopener')});
+  const cards=[...services.querySelectorAll('.service-pro')];
+  cards.forEach((card,index)=>{
+    const data=serviceDetails[index];
+    const content=card.querySelector('.service-content');
+    if(!data||!content)return;
+    const list=data.items.map(item=>`<li>${item}</li>`).join('');
+    const actions=[];
+    if(contactEnabled)actions.push(`<a class="service-action primary request-service" href="#contact" data-service="${data.select}">Send project enquiry</a>`);
+    if(data.project)actions.push(`<a class="service-action" href="${data.project}">${data.project.startsWith('#')?'View projects':'View related project'}</a>`);
+    content.insertAdjacentHTML('beforeend',`<div class="service-deep"><div class="service-deep-title">TYPICAL DELIVERABLES</div><ul class="service-list">${list}</ul><div class="service-fit"><b>Best for:</b> ${data.fit}</div>${actions.length?`<div class="service-actions">${actions.join('')}</div>`:''}</div>`);
+  });
+
+  const grid=services.querySelector('.service-grid');
+  if(grid){
+    grid.insertAdjacentHTML('afterend',`<div class="service-scope-note reveal"><div><h3>Need more than one service?</h3><p>Website development, product listing, forms, design and data work can be combined into one clearly defined project scope.</p></div>${contactEnabled?'<a href="#contact">Send project enquiry →</a>':''}</div>`);
+  }
+  observeReveals();
+}
+
+function loadSecureContact(){
+  const config=document.createElement('script');
+  config.src='secure-config.js?v=2';
+  config.onload=()=>{
+    renderServices(Boolean(window.SV_SECURE_API));
+    const module=document.createElement('script');
+    module.src='secure-contact.js?v=3';
+    module.defer=true;
+    document.head.appendChild(module);
+  };
+  config.onerror=()=>renderServices(false);
+  document.head.appendChild(config);
+}
+loadSecureContact();
+
+const menuBtn=document.getElementById('menuBtn');
+const nav=document.getElementById('navMenu');
+menuBtn?.addEventListener('click',()=>{
+  const open=nav.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded',String(open));
+});
+nav?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+  nav.classList.remove('open');
+  menuBtn?.setAttribute('aria-expanded','false');
+}));
+
+const year=document.getElementById('year');
+if(year)year.textContent=new Date().getFullYear();
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+  if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}
+}),{threshold:.1});
+function observeReveals(){document.querySelectorAll('.reveal:not(.visible)').forEach(element=>observer.observe(element))}
+observeReveals();
