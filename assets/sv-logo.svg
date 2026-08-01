@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">SV monogram</title>
+  <desc id="desc">Geometric SV symbol in gold and navy</desc>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFD86A"/>
+      <stop offset="0.52" stop-color="#F4B400"/>
+      <stop offset="1" stop-color="#C98200"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#001022" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <rect x="20" y="20" width="216" height="216" rx="58" fill="#0A1828"/>
+  <rect x="28" y="28" width="200" height="200" rx="50" fill="none" stroke="url(#gold)" stroke-width="6" opacity="0.9"/>
+  <g filter="url(#shadow)">
+    <path d="M72 78h104c9 0 16 7 16 16s-7 16-16 16H111c-7 0-11 4-11 9s4 9 11 9h34c31 0 51 18 51 45 0 29-22 49-56 49H76c-9 0-16-7-16-16s7-16 16-16h66c11 0 18-6 18-15 0-8-6-13-18-13h-33c-29 0-47-17-47-42 0-26 20-42 50-42z" fill="url(#gold)"/>
+    <path d="M82 92l46 88 46-88h38l-67 122h-34L44 92z" fill="#F7FBFF" opacity="0.98"/>
+  </g>
+</svg>
