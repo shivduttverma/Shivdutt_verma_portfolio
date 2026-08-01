@@ -1,4 +1,4 @@
-const secureConfig=document.createElement('script');secureConfig.src='secure-config.js?v=1';secureConfig.onload=()=>{const secureModule=document.createElement('script');secureModule.src='secure-contact.js?v=1';secureModule.defer=true;document.head.appendChild(secureModule)};document.head.appendChild(secureConfig);
+const secureConfig=document.createElement('script');secureConfig.src='secure-config.js?v=1';secureConfig.onload=()=>{const secureModule=document.createElement('script');secureModule.src='secure-contact.js?v=2';secureModule.defer=true;document.head.appendChild(secureModule)};document.head.appendChild(secureConfig);
 
 const deepStyle=document.createElement('link');deepStyle.rel='stylesheet';deepStyle.href='services-deep.css?v=3';document.head.appendChild(deepStyle);
 
