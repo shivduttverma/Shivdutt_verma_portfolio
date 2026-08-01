@@ -1,4 +1,9 @@
 (()=>{
+  const exactLogoStyle=document.createElement('link');
+  exactLogoStyle.rel='stylesheet';
+  exactLogoStyle.href='assets/sv-logo-exact.css?v=1';
+  document.head.appendChild(exactLogoStyle);
+
   const portraits=[...document.querySelectorAll('[data-pro-portrait]')];
 
   portraits.forEach(image=>{
