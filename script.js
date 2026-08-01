@@ -15,7 +15,17 @@
     document.head.appendChild(display);
   };
 
+  const loadPortraitStyle=version=>{
+    document.querySelectorAll('link[data-portrait-style]').forEach(link=>link.remove());
+    const style=document.createElement('link');
+    style.rel='stylesheet';
+    style.href=`portrait-professional.css?v=${version}`;
+    style.dataset.portraitStyle='true';
+    document.head.appendChild(style);
+  };
+
   loadLogoStyles('6');
+  loadPortraitStyle('1');
 
   const portraits=[...document.querySelectorAll('[data-pro-portrait]')];
   portraits.forEach(image=>{
@@ -37,8 +47,14 @@
   const app=document.createElement('script');
   app.src='script-main.js?v=1';
   app.defer=true;
-  app.onload=()=>loadLogoStyles('7');
+  app.onload=()=>{
+    loadLogoStyles('7');
+    loadPortraitStyle('2');
+  };
   document.head.appendChild(app);
 
-  window.addEventListener('load',()=>loadLogoStyles('8'),{once:true});
+  window.addEventListener('load',()=>{
+    loadLogoStyles('8');
+    loadPortraitStyle('3');
+  },{once:true});
 })();
