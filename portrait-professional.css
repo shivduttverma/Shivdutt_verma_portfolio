@@ -1,21 +1,25 @@
-/* Professional portfolio portrait sizing */
-.hero .portrait-wrap{align-items:center}
-.hero .portrait-card{width:min(390px,100%);aspect-ratio:4/5;max-height:500px}
-.hero .portrait-card img{object-fit:cover;object-position:center 16%}
+/* Compact professional portrait card */
+.hero .portrait-wrap{align-items:center;justify-content:center}
+.hero .portrait-card{width:270px!important;height:340px!important;max-width:270px!important;max-height:340px!important;aspect-ratio:auto!important;border-radius:22px!important}
+.hero .portrait-card img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 12%!important}
+.hero .portrait-overlay{left:16px!important;right:16px!important;bottom:14px!important}
+.hero .portrait-overlay strong{font-size:17px!important}
+.hero .portrait-overlay div span{font-size:11px!important}
+.hero .available{display:none!important}
 
 @media(max-width:980px){
-  .hero .portrait-card{width:min(340px,82vw);max-height:425px}
+  .hero .portrait-card{width:245px!important;height:305px!important;max-width:245px!important;max-height:305px!important}
 }
 
 @media(max-width:760px){
-  .hero{padding-top:28px}
-  .hero .portrait-wrap{order:-1}
-  .hero .portrait-card{width:min(320px,88vw);height:390px;max-height:390px;aspect-ratio:auto;border-radius:24px}
-  .hero .portrait-card img{object-position:center 13%}
-  .hero .portrait-overlay{left:18px;right:18px;bottom:16px}
-  .hero .portrait-overlay strong{font-size:18px}
+  .hero{padding-top:24px!important}
+  .hero .portrait-wrap{order:-1!important}
+  .hero .portrait-card{width:220px!important;height:275px!important;max-width:220px!important;max-height:275px!important;border-radius:20px!important}
+  .hero .portrait-card img{object-position:center 10%!important}
+  .hero .portrait-overlay{left:14px!important;right:14px!important;bottom:12px!important}
+  .hero .portrait-overlay strong{font-size:16px!important}
 }
 
 @media(max-width:390px){
-  .hero .portrait-card{width:min(294px,86vw);height:360px;max-height:360px}
+  .hero .portrait-card{width:205px!important;height:256px!important;max-width:205px!important;max-height:256px!important}
 }
