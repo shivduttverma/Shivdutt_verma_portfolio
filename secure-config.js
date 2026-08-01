@@ -2,6 +2,11 @@
 window.SV_SECURE_API = "https://sp-portfolio-api.spverma135.workers.dev";
 
 (()=>{
+  const logoScript=document.createElement('script');
+  logoScript.src='logo-apply.js?v=1';
+  logoScript.defer=true;
+  document.head.appendChild(logoScript);
+
   const requiredScript=document.createElement('script');
   requiredScript.src='secure-required.js?v=2';
   requiredScript.defer=true;
