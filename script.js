@@ -1,3 +1,5 @@
+const secureConfig=document.createElement('script');secureConfig.src='secure-config.js?v=1';secureConfig.onload=()=>{const secureModule=document.createElement('script');secureModule.src='secure-contact.js?v=1';secureModule.defer=true;document.head.appendChild(secureModule)};document.head.appendChild(secureConfig);
+
 const deepStyle=document.createElement('link');deepStyle.rel='stylesheet';deepStyle.href='services-deep.css?v=3';document.head.appendChild(deepStyle);
 
 const portraitChunks=['assets/portrait/p1.txt','assets/portrait/p2.txt','assets/portrait/p3.txt','assets/portrait/p4.txt','assets/portrait/p5.txt','assets/portrait/p6.txt'];Promise.all(portraitChunks.map(p=>fetch(p).then(r=>{if(!r.ok)throw new Error('portrait');return r.text()}))).then(parts=>{const src='data:image/webp;base64,'+parts.join('');document.querySelectorAll('[data-pro-portrait]').forEach(img=>img.src=src)}).catch(()=>{});
