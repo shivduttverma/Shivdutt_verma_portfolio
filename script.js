@@ -1,15 +1,21 @@
 (()=>{
-  const loadExactLogo=version=>{
-    const previous=document.querySelector('link[data-exact-sv-logo]');
-    if(previous)previous.remove();
-    const style=document.createElement('link');
-    style.rel='stylesheet';
-    style.href=`assets/sv-logo-exact.css?v=${version}`;
-    style.dataset.exactSvLogo='true';
-    document.head.appendChild(style);
+  const loadLogoStyles=version=>{
+    document.querySelectorAll('link[data-sv-logo-style]').forEach(link=>link.remove());
+
+    const exact=document.createElement('link');
+    exact.rel='stylesheet';
+    exact.href=`assets/sv-logo-exact.css?v=${version}`;
+    exact.dataset.svLogoStyle='true';
+    document.head.appendChild(exact);
+
+    const display=document.createElement('link');
+    display.rel='stylesheet';
+    display.href=`assets/logo-display-fix.css?v=${version}`;
+    display.dataset.svLogoStyle='true';
+    document.head.appendChild(display);
   };
 
-  loadExactLogo('3');
+  loadLogoStyles('6');
 
   const portraits=[...document.querySelectorAll('[data-pro-portrait]')];
   portraits.forEach(image=>{
@@ -31,8 +37,8 @@
   const app=document.createElement('script');
   app.src='script-main.js?v=1';
   app.defer=true;
-  app.onload=()=>loadExactLogo('4');
+  app.onload=()=>loadLogoStyles('7');
   document.head.appendChild(app);
 
-  window.addEventListener('load',()=>loadExactLogo('5'),{once:true});
+  window.addEventListener('load',()=>loadLogoStyles('8'),{once:true});
 })();
