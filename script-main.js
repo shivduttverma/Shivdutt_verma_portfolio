@@ -1,9 +1,11 @@
-const deepStyle=document.createElement('link');deepStyle.rel='stylesheet';deepStyle.href='services-deep.css?v=4';document.head.appendChild(deepStyle);
+const deepStyle=document.createElement('link');deepStyle.rel='stylesheet';deepStyle.href='services-deep.css?v=5';document.head.appendChild(deepStyle);
 
-const portraitChunks=['assets/portrait/p1.txt','assets/portrait/p2.txt','assets/portrait/p3.txt','assets/portrait/p4.txt','assets/portrait/p5.txt','assets/portrait/p6.txt'];
-Promise.all(portraitChunks.map(path=>fetch(path).then(response=>{if(!response.ok)throw new Error('portrait');return response.text()})))
-  .then(parts=>{const src='data:image/webp;base64,'+parts.join('');document.querySelectorAll('[data-pro-portrait]').forEach(image=>image.src=src)})
-  .catch(()=>{});
+// Keep the uploaded portrait file as the single source of truth.
+document.querySelectorAll('[data-pro-portrait]').forEach(image=>{
+  image.src='assets/shivdutt-verma.jpg?v=20260802-1';
+  image.style.visibility='visible';
+  image.style.opacity='1';
+});
 
 const serviceDetails=[
   {select:'Business Website',project:'projects/business/index.html',items:['Responsive home, about, services and contact sections','Enquiry forms and clear call-to-action workflows','Business information, service areas and trust sections','Desktop, tablet and mobile layout optimization','Basic on-page SEO structure and page hierarchy'],fit:'Local businesses, service providers, consultants, shops and professionals.'},
